@@ -22,6 +22,7 @@ export default () => (
             <Link to={path}>{id}</Link>
           </li>
         ))}
+        <li><a href="/___graphql">___GraphQL</a></li>
       </ul>
     )}
   />
