@@ -16,8 +16,11 @@ const IndexPage = () => (
     </div>
     <Link to="/page-2/">Go to page 2</Link> <br />
     <Link to="/using-typescript/">Go to "Using TypeScript"</Link> <br />
-    <Link to="/about/">About</Link> <br />
-    <Link to="/tutorial/part-one/">Tutorial</Link> <br />
+    <Link to="/about/">About</Link> <br /> <br />
+
+    <Link to="/tutorial/part-one/">Tutorial</Link> <br /> <br />
+
+    <Link to="/article/">Article</Link> <br />
 
   </Layout>
 )
