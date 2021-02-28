@@ -1,13 +1,56 @@
 import React from "react";
-import { Link } from "gatsby";
+import { Link, StaticQuery, graphql } from "gatsby";
+import styled from "styled-components";
 
-import logoSrc from "../images/planet_th.jpg";
+import { colors } from "../utils/vars";
+
+//import logoSrc from "../images/planet_th.jpg";
+
+const Header = styled.header`
+    width: 100%;
+    height: 3em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: ${colors.main};
+    color: ${colors.textSecond};
+    padding: 0.5em;
+  `;
+
+const Logo = styled.img`
+    border-radius: 50%;
+    height: 100%;
+  `;
+const logoLink = `height: 100%;`;
 
 export default () => (
-  <header>
-    <Link to="/">
-      <img src={logoSrc} alt="logo" width="10%" height="10%" />
-    </Link>
-    That is header
-  </header>
+  <StaticQuery
+    query={graphql`
+        {
+          allFile(filter: { name: { eq: "logo" } }) {
+            edges {
+              node {
+                publicURL
+              }
+            }
+          }
+        }
+      `}
+    render={({
+               allFile: {
+                 edges: [
+                   {
+                     node: { publicURL }
+                   }
+                 ]
+               }
+             }) => (
+      <Header>
+        That is header
+        <Link to="/" css={logoLink}>
+          <Logo src={publicURL} alt="logo" />
+        </Link>
+      </Header>
+    )}
+  />
 );
